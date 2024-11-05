@@ -1,6 +1,8 @@
 # Deepstream Setup 
 ## Jetson Setup
-_Open terminal and run command_
+_Use NVIDIA SDK Manager for install JetPack and Deepstream_
+
+_After installed Open terminal and run command_
 ```bash
 $ sudo apt update
 $ sudo apt install python3-pip
@@ -11,7 +13,10 @@ _Restart and run_
 $ jtop
 ```
 
-**Install Glib**
+**Migrate glib to newer version**
+
+_In order to migrate to newer glib version (e.g. 2.76.6) follow below steps:_
+    
 1. Prerequisites: Install below packages:
     ```bash
     $ sudo pip3 install meson
@@ -68,3 +73,40 @@ libyaml-cpp-dev
     $ sudo cp /usr/local/lib/librdkafka* /opt/nvidia/deepstream/deepstream/lib
     $ sudo ldconfig
     ```
+**Run deepstream-app example**
+1. Navigate to the configs/deepstream-app directory on the development kit.
+    ```bash
+    $ cd /opt/nvidia/deepstream/deepstream-7.1/samples/configs/deepstream-app
+    ```
+2. Enter the following command to run the reference application:
+    ```bash
+    # deepstream-app -c <path_to_config_file>
+    $ deepstream-app -c source30_1080p_dec_infer-resnet_tiled_display_int8.txt
+    ```
+    _Where <path_to_config_file> is the pathname of one of the reference application’s configuration files, found in **configs/deepstream-app/**. See Package Contents in **configs/deepstream-app/** for a list of the available files._
+   
+    _Config files that can be run with deepstream-app:_
+    * source30_1080p_dec_infer-resnet_tiled_display_int8.txt
+
+    * source30_1080p_dec_preprocess_infer-resnet_tiled_display_int8.txt
+
+    * source4_1080p_dec_infer-resnet_tracker_sgie_tiled_display_int8.txt
+
+    * source1_usb_dec_infer_resnet_int8.txt
+
+    * source1_csi_dec_infer_resnet_int8.txt
+
+    * source2_csi_usb_dec_infer_resnet_int8.txt
+
+    * source6_csi_dec_infer_resnet_int8.txt
+
+    * source2_1080p_dec_infer-resnet_demux_int8.txt
+
+    * source4_1080p_dec_infer-resnet_tracker_sgie_tiled_display_int8.yml
+
+    * source30_1080p_dec_infer-resnet_tiled_display_int8.yml
+
+    * source4_1080p_dec_preprocess_infer-resnet_preprocess_sgie_tiled_display_int8.txt
+
+    * source2_dewarper_test.txt
+
